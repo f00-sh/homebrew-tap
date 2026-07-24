@@ -9,13 +9,13 @@
 class F00 < Formula
   desc "f00tils — pure assembly coreutils replacement (multicall, freestanding)"
   homepage "https://f00.sh"
-  version "0.15.9"
+  version "0.15.10"
   license "MIT"
 
   on_linux do
     on_intel do
-      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-0.15.9-linux-x86_64.tar.gz"
-      sha256 "f0be4c33e6b9680564ae793ffb6e3806e4bf8fb464dffb8dcf4719fd9f05d98a"
+      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-0.15.10-linux-x86_64.tar.gz"
+      sha256 "3f2e1803fa27a6bba9a0580d5aad532ade5f4479953c78cae572e477c247699a"
     end
   end
 

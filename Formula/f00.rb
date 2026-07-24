@@ -1,47 +1,47 @@
-# Homebrew formula for f00.
+# Homebrew formula for f00 (pure assembly multicall coreutils suite).
 #
 # Install:
 #   brew install theesfeld/tap/f00
 #
-# Official installer (any platform):
+# Official installer:
 #   curl -fsSL https://f00.sh/install.sh | bash
-#
-# This file is auto-updated on release (Refs: packaging phase).
 
 class F00 < Formula
-  desc "Modern, friendly directory lister (ls rewrite in Rust)"
+  desc "f00tils — pure assembly coreutils replacement (multicall, freestanding)"
   homepage "https://f00.sh"
-  version "0.15.0-beta.1"
-  license any_of: ["MIT", "Apache-2.0"]
-
-  on_macos do
-    on_arm do
-      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-aarch64-apple-darwin.tar.gz"
-      sha256 "a1d558a24e5570df6f1dbad28e27ca2a0fb6ab9ca89539bac2038dd77314aacd"
-    end
-    on_intel do
-      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-x86_64-apple-darwin.tar.gz"
-      sha256 "d1e6bdc76908128dd22522b1793f4613d150ae98f76fb6fb4bf3b6647c8557c0"
-    end
-  end
+  version "0.15.1"
+  license "MIT"
 
   on_linux do
-    on_arm do
-      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "a03c6a7c36edd753aafeec80cdea340fc23d04f7bd45c7e5dd903a345b4d2862"
-    end
     on_intel do
-      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "a81e1eef3fe6910bee34080edbb59946572101fea1ec6941abb1a73641b1c3e7"
+      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-0.15.1-linux-x86_64.tar.gz"
+      sha256 "94f38b9467a83d925127e071fe618125c00e590a8df181dfc805425ae47f698e"
     end
   end
 
   def install
-    # Release tarball root is f00-<target-triple>/f00
-    bin.install Dir["f00-*/f00"].first
+    bin.install "f00"
+    utils = %w[
+      ls cat true false yes nproc tty whoami basename dirname
+      head tail wc tee seq echo pwd sleep
+      env printenv realpath readlink pathchk mktemp link unlink sync truncate
+      mkdir rmdir chmod touch logname hostid
+      cut tr sort uniq rev tac nl fold expand unexpand paste join comm fmt od
+      split csplit shuf tsort pr ptx factor numfmt expr
+      cp mv rm ln chown chgrp stat df du install mkfifo mknod shred dd dir vdir
+      id groups uname arch date users who pinky uptime hostname
+      nice nohup timeout kill test printf
+      md5sum sha1sum sha256sum sha224sum sha384sum sha512sum b2sum cksum sum
+      base64 basenc base32 dircolors chroot stty stdbuf runcon chcon
+    ]
+    utils.each do |u|
+      bin.install_symlink "f00" => "f00-#{u}"
+    end
+    man1.install Dir["man/man1/*.1"] if Dir.exist?("man/man1")
   end
 
   test do
-    assert_match "f00", shell_output("#{bin}/f00 --version")
+    assert_match "f00", shell_output("#{bin}/f00-ls --version")
+    system bin/"f00-true"
   end
 end

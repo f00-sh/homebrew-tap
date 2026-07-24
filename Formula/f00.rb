@@ -9,13 +9,13 @@
 class F00 < Formula
   desc "f00tils — pure assembly coreutils replacement (multicall, freestanding)"
   homepage "https://f00.sh"
-  version "0.15.11"
+  version "0.15.12"
   license "MIT"
 
   on_linux do
     on_intel do
-      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-0.15.11-linux-x86_64.tar.gz"
-      sha256 "480725aea231c03e366b09c87200e0bfb051c6d5d556eacb1a9bf87542e8fa99"
+      url "https://github.com/theesfeld/f00/releases/download/v#{version}/f00-0.15.12-linux-x86_64.tar.gz"
+      sha256 "0c6b43000985d03c19482ae116382b31b825d49d6ee5671f39dd468781f1a66f"
     end
   end
 
@@ -32,7 +32,7 @@ class F00 < Formula
       id groups uname arch date users who pinky uptime hostname
       nice nohup timeout kill test printf
       md5sum sha1sum sha256sum sha224sum sha384sum sha512sum b2sum cksum sum
-      base64 basenc base32 dircolors chroot stty stdbuf runcon chcon
+      base64 basenc base32 dircolors chroot stty stdbuf runcon chcon config
     ]
     utils.each do |u|
       bin.install_symlink "f00" => "f00-#{u}"

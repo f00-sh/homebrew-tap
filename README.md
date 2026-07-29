@@ -1,5 +1,5 @@
-# Homebrew tap for theesfeld projects
+# Homebrew tap for f00 projects
 
 ```bash
-brew install theesfeld/tap/f00
+brew install f00-sh/tap/f00
 ```

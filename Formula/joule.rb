@@ -1,26 +1,26 @@
 class Joule < Formula
   desc "Donate idle compute, earn millijoules, use open-weight AI"
   homepage "https://joule.f00.sh/"
-  version "0.1.10"
+  version "0.1.11"
   license "MIT"
   on_macos do
     on_arm do
       url "https://github.com/f00-sh/joule/releases/download/v#{version}/joule-#{version}-darwin-aarch64.tar.gz"
-      sha256 "8740bb5e51f327f0df90c1d64b2cf02c6413d7bc6bab9a63967f0b0e9838fcc7"
+      sha256 "98af90bc443ff4fbac8723a3ec1fc84714076f3cbb1e0f0992e07c99ea22ef5b"
     end
     on_intel do
       url "https://github.com/f00-sh/joule/releases/download/v#{version}/joule-#{version}-darwin-x86_64.tar.gz"
-      sha256 "55441f1f099399bfc19770d24eae008749225cd84c5f8658c772cfbd668850ee"
+      sha256 "898f913eae145ecb396d3a88d420a1929f9c679e14f68dee50ce4b3d2d9de770"
     end
   end
   on_linux do
     on_arm do
       url "https://github.com/f00-sh/joule/releases/download/v#{version}/joule-#{version}-linux-aarch64.tar.gz"
-      sha256 "26c98d00cca21cd583e6e4d6dc90f5d9cd5e4410f22f5ce992cc8c5cd33f0d7f"
+      sha256 "3565e29a474152c90ae7c840ccf77c86365943252cf81a4801393f06bd2ea516"
     end
     on_intel do
       url "https://github.com/f00-sh/joule/releases/download/v#{version}/joule-#{version}-linux-x86_64.tar.gz"
-      sha256 "07d9b82abd1ddd3844d5ffeb239f1d2a205ca659d437c8e1c6237697bc712662"
+      sha256 "f556eac53b3a29dd6972deddd3e099e10cb21038cff45f83aaadbfffe62e5d2a"
     end
   end
   def install
